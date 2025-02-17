@@ -10,3 +10,23 @@ Test metrics:
 Enhancements List:
 - Inactivate key after all generated files are downloaded (tracked via GCS event queue and memorystore?)
 - Delete key after all generated files are downloaded (after inactivation, as required for HMAC keys).
+
+References:
+- https://cloud.google.com/storage/docs/access-control/iam-permissions 
+- https://cloud.google.com/storage/docs/authentication/canonical-requests
+- https://cloud.google.com/storage/docs/access-control/signing-urls-manually
+
+Notes:
+- Should use v4 signing so query parameters cannot be alter after the URL is signed. [v2 signing process](https://cloud.google.com/storage/docs/access-control/signed-urls-v2)
+
+## Interesting GCS Events
+
+
+HMAC Specific
+- storage.hmacKeys.create
+- storage.hmacKeys.delete
+- storage.hmacKeys.update
+
+Storage General
+- storage.objects.get
+- storage.bucketOperations.get
